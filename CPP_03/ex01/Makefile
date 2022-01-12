@@ -2,7 +2,7 @@ NAME	=	ClapTrap
 SRC		=	main.cpp \
 			ClapTrap.cpp \
 			ScavTrap.cpp
-HEADER	=	ClapTrap.hpp
+HEADER	=	ClapTrap.hpp ScavTrap.hpp
 OBJ		=	$(SRC:.cpp=.o)
 FLAGS	=	-Wall -Wextra -Werror
 

@@ -1,10 +1,12 @@
 NAME	=	ClapTrap
 SRC		=	main.cpp \
 			ClapTrap.cpp \
-			FragTrap.cpp
-HEADER	=	ClapTrap.hpp FragTrap.hpp
+			FragTrap.cpp \
+			ScavTrap.cpp \
+			DiamondTrap.cpp
+HEADER	=	ClapTrap.hpp FragTrap.hpp ScavTrap.hpp DiamondTrap.hpp
 OBJ		=	$(SRC:.cpp=.o)
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror -Wshadow -Wno-shadow -std='c++98'
 
 all: $(NAME)
 
