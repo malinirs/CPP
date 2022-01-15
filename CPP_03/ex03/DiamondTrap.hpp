@@ -13,8 +13,8 @@ private:
 public:
 	DiamondTrap();
 	DiamondTrap(std::string const &name);
-	DiamondTrap(FragTrap const &copy);
-	DiamondTrap &operator=(FragTrap const &oper); // перегрузка
+	DiamondTrap(DiamondTrap const &copy);
+	DiamondTrap &operator=(DiamondTrap const &oper); // перегрузка
 	~DiamondTrap();
 
 	virtual void	attack(std::string const &target); //virtual делает ф общей для использования в родителе

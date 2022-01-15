@@ -11,6 +11,6 @@ int	main(void)
 	malinka->guardGate();
 	malinka->highFivesGuys();
 	malinka->whoAmI();
-//	delete malinka;
+	delete malinka;
 	return (0);
 }

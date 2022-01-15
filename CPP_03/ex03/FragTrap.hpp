@@ -7,14 +7,15 @@
 
 # include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap
+
+class FragTrap : virtual public ClapTrap
 {
 public:
 	FragTrap();
 	FragTrap(std::string const &name);
 	FragTrap(FragTrap const &copy);
 	FragTrap &operator=(FragTrap const &oper); // перегрузка
-	~FragTrap();
+	virtual ~FragTrap();
 
 	virtual void	attack(std::string const &target); //virtual делает ф общей для использования в родителе
 	virtual void	takeDamage(unsigned int amount);
