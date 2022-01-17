@@ -7,10 +7,9 @@
 
 # include <string>
 # include <iostream>
-# include "AMateria.hpp"
 # include "ICharacter.hpp"
 
-class Character
+class Character : public ICharacter
 {
 protected:
 	AMateria	*materias[4]; //Инвентарь Персонажа состоит не более чем из 4 Материй, изначально пустых.

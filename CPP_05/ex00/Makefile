@@ -1,11 +1,7 @@
-NAME	=	Materia
+NAME	=	Bureaucrat
 SRC		=	main.cpp \
-			AMateria.cpp \
-			Character.cpp \
-			MateriaSource.cpp \
-			Cure.cpp \
-			Ice.cpp
-HEADER	=	AMateria.hpp ICharacter.hpp Character.hpp MateriaSource.hpp IMateriaSource.hpp Cure.hpp Ice.hpp
+			Bureaucrat.cpp
+HEADER	=	Bureaucrat.hpp
 OBJ		=	$(SRC:.cpp=.o)
 FLAGS	=	-Wall -Wextra -Werror
 
@@ -26,4 +22,4 @@ fclean	:	clean
 re		:	fclean all
 
 
-.PHONY	:	all clean fclean re
+.PHONY	:	all clean fclean re4

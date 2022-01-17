@@ -4,7 +4,7 @@
 
 #include "Character.hpp"
 
-Character::Character(std::string const & type) : type(type)
+Character::Character(std::string type) : types(type)
 {
 	for (int index = 0; index < 4; ++index)
 		this->materias[index] = 0x0;
@@ -32,7 +32,7 @@ Character::Character(const Character &cp)
 
 Character &Character::operator=(const Character &oper)
 {
-	this->type = oper.type;
+	this->types = oper.types;
 	for (int index = 0; index < 4; ++index)
 		this->materias[index] = oper.materias[index];
 	std::cout << "Character assignation operator overload called" << std::endl;
@@ -61,13 +61,13 @@ void	Character::unequip(int idx)
 		return ;
 	}
 	std::cout << "Move matter with index " << idx << " type " << materias[idx]->getType() << std::endl;
-	this->materias[idx] = 0x0;
+	this->materias[idx] = NULL;
 
 }
 
 void	Character::use(int idx, ICharacter& target)
 {
-	if (!this->materias[index])
+	if (!this->materias[idx])
 	{
 		std::cout << "Oh! No such material has been found.!" << std::endl;
 		return ;

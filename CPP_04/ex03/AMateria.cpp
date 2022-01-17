@@ -3,6 +3,7 @@
 //
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 AMateria::AMateria(std::string const & type) : type(type)
 { std::cout << "Constructor AMateria called" << std::endl; }
