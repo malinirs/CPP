@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 //	try //пытаться
 //	{
@@ -26,50 +27,33 @@
 
 int	main(void)
 {
-	std::cout << "*****************************************" << std::endl;
+	std::cout << "-----------------------------------------" << std::endl;
 
-	try
+	try // форму дали подписать двум бюрократом
 	{
 		Bureaucrat	Malinka("Malinka", 2);
 		std::cout << Malinka << std::endl;
-		Malinka.increase_value();
-		std::cout << Malinka << std::endl;
-		Malinka.increase_value();
-		std::cout << Malinka << std::endl;
-		Malinka.decrease_value();
-		std::cout << Malinka << std::endl;
+		Bureaucrat	Berry("Berry", 5);
+		std::cout << Berry << std::endl;
+
+		Form	a("A", 100, 50);
+		a.beSigned(Malinka);
+		std::cout << a << std::endl;
+		a.beSigned(Berry);
+		std::cout << a << std::endl;
 	}
 	catch (std::exception & e)
 	{ std::cout << e.what() << std::endl; }
 
-	std::cout << "*****************************************" << std::endl;
+	std::cout << "-----------------------------------------" << std::endl;
 
-	try
-	{
-		Bureaucrat	Berry("Berry", 149);
-		std::cout << Berry << std::endl;
-		Berry.decrease_value();
-		std::cout << Berry << std::endl;
-		Berry.decrease_value();
-		std::cout << Berry << std::endl;
-		Berry.increase_value();
-		std::cout << Berry << std::endl;
-	}
-	catch (std::exception & e)
-	{ std::cout << e.what() << std::endl; }
-
-	std::cout << "*****************************************" << std::endl;
-
-	try
+	try // неподходящий ранг у бюрократа
 	{
 		Bureaucrat	Candy("Candy", 75);
 		std::cout << Candy << std::endl;
-		Candy.decrease_value();
-		std::cout << Candy << std::endl;
-		Candy.increase_value();
-		std::cout << Candy << std::endl;
-		Candy.increase_value();
-		std::cout << Candy << std::endl;
+
+		Form	b("B", 10, 10);
+		b.beSigned(Candy);
 	}
 	catch (std::exception & e)
 	{ std::cout << e.what() << std::endl; }
