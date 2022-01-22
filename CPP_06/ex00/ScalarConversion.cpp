@@ -19,6 +19,30 @@ ScalarConversion &ScalarConversion::operator=(ScalarConversion const &oper)
 	return (*this);
 }
 
+void	ScalarConversion::check()
+{
+	if (this->str == "nanf" || this->str == "nan")
+	{
+		std::cout << "Char  : " << "impossible" << std::endl;
+		std::cout << "Int   : " << "impossible" << std::endl;
+		std::cout << "Float : " << "nanf" << std::endl;
+		std::cout << "Double: " << "nan" << std::endl;
+		return ;
+	}
+	if (this->str[0] == '+')
+	{
+		std::cout << "Char  : " << "impossible" << std::endl;
+		std::cout << "Int   : " << "impossible" << std::endl;
+		std::cout << "Float : " << "inff" << std::endl;
+		std::cout << "Double: " << "inf" << std::endl;
+		return ;
+	}
+	std::cout << "Char  : " << "impossible" << std::endl;
+	std::cout << "Int   : " << "impossible" << std::endl;
+	std::cout << "Float : " << "-inff" << std::endl;
+	std::cout << "Double: " << "-inf" << std::endl;
+}
+
 const char*	ScalarConversion::Error::what() const throw()
 { return ("Cannot be converted: An undisplayable character was passed!"); }
 
@@ -35,6 +59,7 @@ int		ScalarConversion::count_len()
 {
 	int	i = 0;
 	int	temp;
+	this->count_zero = 0;
 
 	if (str[i] == '-')
 		i++;
@@ -43,12 +68,16 @@ int		ScalarConversion::count_len()
 	this->dot = false;
 	if (str[i] == '.')
 	{
-		i++;
 		this->dot = true;
 		temp = i;
+		i++;
 	}
 	while (std::isdigit(str[i]))
+	{
+		if (str[i] == '0')
+			count_zero++;
 		i++;
+	}
 	if (temp == i) // на случай если подать в argv "90."
 		this->dot = false;
 	return (i);
@@ -69,7 +98,7 @@ void	ScalarConversion::work_number()
 
 	float	number_f = static_cast<float>(std::stof(this->ptr));
 	double 	number_d = static_cast<double>(std::stod(this->ptr));
-	if (this->dot)
+	if (this->dot && !this->count_zero)
 	{
 		std::cout << "Float : " << number_f << "f"<< std::endl;
 		std::cout << "Double: " << number_d << std::endl;
@@ -85,6 +114,11 @@ void	ScalarConversion::convert()
 {
 	if (str[0] < 33 || str[0] > 126) // проверка на то, что символ отображаемый
 		throw ScalarConversion::Error();
+	if (str == "-inff" || str == "+inff" || str == "nanf" || str == "-inf" || str == "+inf" || str == "nan")
+	{
+		check();
+		return ;
+	}
 	if (check_number(str[0], str[1])) //работаем как с числом
 		work_number();
 	else // работаем как с символом

@@ -16,6 +16,7 @@ private:
 	std::string	str;
 	bool		dot; // есть ли точка
 	std::string	ptr; // новая строчка обрезанная от лишних символов
+	int			count_zero; // количество нулей
 	ScalarConversion();
 
 public:
@@ -34,6 +35,7 @@ public:
 	int		check_number(char first, char second);
 	void	work_number();
 	int		count_len();
+	void	check();
 };
 
 #endif
