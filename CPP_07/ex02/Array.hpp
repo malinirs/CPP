@@ -44,8 +44,6 @@ public:
 			throw Error();
 		return (element[cout]);
 	};
-
-//	unsigned int	getSize(void) const { return (len_element); }
 };
 
 
